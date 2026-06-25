@@ -1,0 +1,15 @@
+name: Hello Test
+  on:
+    workflow_dispatch:
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Say hello
+          run: echo "Hello from GitHub Actions!"
+        - name: Check Android SDK
+          run: |
+            echo "ANDROID_HOME=$ANDROID_HOME"
+            echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+            sdkmanager --list 2>/dev/null | head -5 || echo "sdkmanager not in PATH"
+  
